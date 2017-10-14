@@ -1,0 +1,58 @@
+<app-modal #modal>
+  <div class="app-modal-header">
+  Expanded Editable View
+  </div>
+  <div class="app-modal-body">
+    <form>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" placeholder="Enter Name" name="name" [(ngModel)]="patientData.name">
+      </div>
+      <div class="form-group">
+        <label for="name">Birthdate:</label>
+        <input disabled type="text" class="form-control" name="birthdate" [(ngModel)]="patientData.birthdate">
+      </div>
+      <div class="form-group">
+        <label for="contact">Contact:</label>
+        <input type="tel" class="form-control" placeholder="Enter Contact No." name="contact" [(ngModel)]="patientData.contact">
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea class="form-control" rows="3" [(ngModel)]="patientData.address" name="address"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="address">Next Appoitment:</label>
+        <input type="datetime-local" class="form-control" name="nextappt" [(ngModel)]="nextApptDateTimeTemp">
+      </div>
+      <div class="form-group">
+        <label for="name">First Appointment:</label>
+        <input disabled type="text" class="form-control" name="first_appt" [(ngModel)]="firstApptTemp">
+      </div>    
+      <div class="form-group">
+        <label for="medication">Medication:</label>
+        <textarea class="form-control" rows="3" [(ngModel)]="patientData.medication" name="medication"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="medical_condition">Medical Condition:</label>
+        <textarea class="form-control" rows="3" [(ngModel)]="patientData.medical_condition" name="medical_condition"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="other_details">Other Details:</label>
+        <textarea class="form-control" rows="3" [(ngModel)]="patientData.details" name="details"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="name">Updated At:</label>
+        <input disabled type="text" class="form-control" name="updated_at" [(ngModel)]="updatedAtTemp">
+      </div>
+      <div class="form-group">
+        <label for="name">Created At:</label>
+        <input disabled type="text" class="form-control" name="created_at" [(ngModel)]="createdAtTemp">
+      </div>
+
+    </form>
+  </div>
+  <div style="cursor: pointer"class="app-modal-footer">
+    <button [disabled]="updatingData" type="button" class="btn btn-default" (click)="hide()">Close</button>
+    <button [disabled]="updatingData" type="button" class="btn btn-primary" (click)="updatePatientData()">{{(updatingData ? 'Saving...wait' : 'Save Changes')}}</button>
+  </div>
+</app-modal>

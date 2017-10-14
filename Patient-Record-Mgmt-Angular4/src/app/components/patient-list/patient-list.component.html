@@ -1,0 +1,48 @@
+<h2>Patient List</h2>
+<div *ngIf="loggedIn">
+  <div>
+    <button style="position: relative; left: 10px" type="button" (click)="refresh()" class="btn btn-info">Refresh</button>
+  </div>
+  <div class="table-responsive">          
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Birthdate</th>
+          <th>Age</th>
+          <th>Address</th>
+          <th>Contact</th>
+          <th>Next Appt Date</th>
+          <th>First Appt</th>
+          <th>Medication</th>
+          <th>Medical Condition</th>
+          <th>Other details</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="cursor: pointer;" *ngFor="let patient of patientList; let i = index" (click)=patientModal.initiate(patient)>
+          <td>{{i + 1}}</td>
+          <td>{{patient.name}}</td>
+          <td>{{patient.birthdate}}</td>
+          <td>{{_getAge(patient.birthdate)}}</td>
+          <td>{{patient.address}}</td>
+          <td>{{patient.contact}}</td>
+          <td>{{patient.next_appt_date + " " + patient.next_appt_time}}</td>
+          <td>{{patient.first_appt | date: 'yyyy-MM-dd hh:mm:ss'}}</td>
+          <td>{{patient.medication}}</td>
+          <td>{{patient.medical_condition}}</td>
+          <td>{{patient.details}}</td>
+          <td><button type="button" class="btn btn-danger" (click)="$event.stopPropagation(); deletePatient(patient.id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-patient-detail-edit-modal #patientModal></app-patient-detail-edit-modal>
+</div>
+<div>
+  <h3 *ngIf="!loggedIn">
+    You have not logged in yet. <a routerLink="/login">Login</a> now!
+  </h3>
+</div>

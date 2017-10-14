@@ -1,0 +1,12 @@
+<h2>Home</h2>
+<div *ngIf="loggedIn">
+	<h3>
+		You have logged in. Welcome!	
+	</h3>
+</div>
+<div>
+	<h3 *ngIf="!loggedIn">
+		You have not logged in yet. <a routerLink="/login">Login</a> now!
+	</h3>
+</div>
+
