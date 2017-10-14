@@ -79,7 +79,7 @@ export class PatientDetailEditModalComponent implements OnInit {
   		err => {
   			this.updatingData = false;
   			console.log(err);
-  			if(err.status === 401 || err.status === 403) {
+  			if(err && err.status && (err.status === 401 || err.status === 403)) {
   				console.log("User needs to login again!");
   				alert("Session expired. Logout and Login again.");
   			} else {

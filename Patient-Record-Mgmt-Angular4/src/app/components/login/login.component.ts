@@ -37,9 +37,15 @@ export class LoginComponent implements OnInit {
         console.log("User logged in!!!");
     		this._router.navigate(['home']);
     	},
-        err  => {
-        	alert("Login Failed! Enter valid credentials");
-        	this.errorMsg = <any>err;
+      err  => {
+        if(err === "backend server error") {
+          alert("Some error with backend. Please try again after sometime");
+        } else if(err && err.status && err.status === 401) {
+          alert("Login failed. Wrong credentials");
+        } else {
+          alert("Some error with backend. Please try again after sometime");
+        }
+      	this.errorMsg = <any>err;
     		console.log(this.errorMsg);
     	}
     );

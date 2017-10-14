@@ -14,7 +14,7 @@ export class PatientService {
 	private _serverError(err: any) {
 	    console.log('sever error:', err);  // debug
 	    if(err instanceof Response) {
-	      	return Observable.throw({status: err.status});
+	      	return Observable.throw({status: err.status} || 'backend server error');
 	    }
 	    return Observable.throw(err || 'backend server error');
 	}

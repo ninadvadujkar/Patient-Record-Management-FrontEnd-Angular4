@@ -31,7 +31,7 @@ import { AddPatientComponent } from './components/add-patient/add-patient.compon
     RouterModule.forRoot([
       {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'home',
         pathMatch: 'full'
       },
       {
@@ -50,7 +50,7 @@ import { AddPatientComponent } from './components/add-patient/add-patient.compon
         path: 'addpatient',
         component: AddPatientComponent
       },
-      { path: '**', redirectTo: 'login', pathMatch: 'full' },
+      { path: '**', redirectTo: 'home', pathMatch: 'full' },
     ])
   ],
   providers: [],

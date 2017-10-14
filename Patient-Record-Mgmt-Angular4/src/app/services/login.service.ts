@@ -17,7 +17,7 @@ export class LoginService {
 	private _serverError(err: any) {
 	    console.log('sever error:', err);  // debug
 	    if(err instanceof Response) {
-	      return Observable.throw(err.json().error || 'backend server error');
+	      return Observable.throw({status: err.status} || 'backend server error');
 	      // if you're using lite-server, use the following line
 	      // instead of the line above:
 	      //return Observable.throw(err.text() || 'backend server error');

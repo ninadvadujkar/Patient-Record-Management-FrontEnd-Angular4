@@ -51,7 +51,7 @@ export class PatientListComponent implements OnInit {
   		err => {
   			console.log(err);
   			this.state = 2;
-  			if(err.status === 401 || err.status === 403) {
+  			if(err && err.status && (err.status === 401 || err.status === 403)) {
   				console.log("User needs to login again!");
   				alert("Session expired. Logout and Login again.");
   			} else {
@@ -73,7 +73,7 @@ export class PatientListComponent implements OnInit {
   		},
   		err => {
   			console.log(err);
-  			if(err.status === 401 || err.status === 403) {
+  			if(err && err.status && (err.status === 401 || err.status === 403)) {
   				console.log("User needs to login again!");
   				alert("Session expired. Logout and Login again.");
   			} else {
